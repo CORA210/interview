@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajaxRequest</title>
+</head>
+<body>
+<script>
+  //创建 XMLHttpRequest 对象 ；
+  var xhr = null;
+
+  // 检查浏览器是否支持 XMLHttpRequest 对象
+  if(window.XMLHttpRequest){
+    xhr = new XMLHttpRequest();
+  }else{
+    xhr = new ActiveXObject('Microsoft.XMLHTTP');
+  }
+
+  // 设置请求行，向服务器发送请求；
+  xhr.open('GET','http://ajax.com/phpFile/time.php',true);
+
+//设置请求体
+  xhr.send(null);
+
+  //设置响应HTTP请求状态变化的函数
+  xhr.onreadystatechange = function () {
+
+    if(this.readyState !=4 ) return
+
+    // 获得来自服务器，字符串形式的响应数据。
+    console.log(this.responseText);
+
+  }
+
+</script>
+</body>
+</html>
